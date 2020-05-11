@@ -1,0 +1,3 @@
+com\jasmine\erp\repositories\clientes\ClienteRepository.class
+com\jasmine\erp\clientes\conf\ClientesBDConfig.class
+com\jasmine\erp\entities\clientes\Cliente.class
