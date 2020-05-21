@@ -9,6 +9,11 @@ import com.jasmine.erp.entities.clientes.Cliente;
 import com.jasmine.erp.entities.configuracion.Parametro;
 import com.jasmine.erp.repositories.clientes.custom.ClienteRepositoryCustom;
 
+/**
+ * Repositorio para comunicacion y actualizacion de la tabla Cliente
+ * @author jrios
+ *
+ */
 public interface ClienteRepository extends JpaRepository<Cliente, Long>, ClienteRepositoryCustom{
 
 	/**
@@ -23,4 +28,12 @@ public interface ClienteRepository extends JpaRepository<Cliente, Long>, Cliente
 	List<String> obtenerListaTelefonosFiltro(String valor);
 	@Query("select distinct param from Cliente cliente inner join Parametro param on param.id = cliente.ciudad")
 	List<Parametro> obtenerListaCiudadesFiltro();
+	
+	/**
+	 * Permite el uso de autocompletar para clientes de acuerdo a su nombre
+	 * @param valor
+	 * @return
+	 */
+	@Query("select e from Cliente e where e.nombre like %?1%")
+	List<Cliente> obtenerClientesAutocomplete(String valor);
 }
